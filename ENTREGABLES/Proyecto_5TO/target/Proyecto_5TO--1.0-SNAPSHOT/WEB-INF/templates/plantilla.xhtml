@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <title>Facelets Template</title>
+        <f:event type="preRenderView" listener="#{plantillaController.verificarSesion()}" />      
+        <link href="./../resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="index.css" />
+    </h:head>
+
+    <h:body>
+        <center><hr/><img src="./../resources/images/Head.png" alt="Workplace" usemap="#head"/>
+        <map name="head">
+            <area shape="rect" coords="1,1,896,58" alt="Head_" href="index.proyecto"/>
+        </map><hr/></center>
+        
+        <div id="top">
+            <ui:insert name="top">
+                <h:form>
+                    <p:menubar model="#{menuController.model}" >
+                        <f:facet name="options" >                            
+                            <p:commandButton actionListener="#{menuController.cerrarSesion()}" icon="ui-icon-power" action="/index?faces-redirect=true" title="Cerrar Sesión"/>                            
+                        </f:facet> 
+                    </p:menubar> 
+                </h:form>                                        
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom" style="text-align: center">
+            <ui:insert name="bottom" >
+
+            </ui:insert>
+        </div>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-main">
+                    <div class="footer-columna">
+                        <h2>About</h2>
+                        <p>Castilla y León​​ es una comunidad autónoma española, referida como «comunidad histórica y cultural» en su Estatuto de Autonomía.​ Se constituyó como preautonomía en 1978​ y adquirió su estatus de comunidad autónoma en 1983.
+                            <p:link value="Mas Info" outcome="/about" style="color: grey"/>
+                        </p>
+                    </div>
+                    <div class="footer-columna">
+                        <h2>Contact</h2>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Isaac Castro</p></span><br/>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Richar Cabrera</p></span><br/>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Jhonny Velasco</p></span><br/>
+                            <p:link value="Mas Info" outcome="/contact" style="color: grey"/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copy-redes">
+                <div class="main-copy-redes">
+                    <div class="footer-copy">
+                        © 2020 | Derechos Reservados | <a target="_blank" href="https://www.ups.edu.ec/" style="color: grey"> Universidad Politecnica Salesiana</a> | Proyecto Intergrador 5to Semestre
+                    </div>
+                    <div class="footer-redes">
+                        <a target="_blank" href="https://www.facebook.com/christian12lp" class="fa fa-facebook"></a>
+                        <a target="_blank" href="https://github.com/Proyecto-Integrador-5to/Proyecto" class="fa fa-github"></a>
+                        <a target="_blank" href="#" class="fa fa-wikipedia-w"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </h:body>
+</html>
