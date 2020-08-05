@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h2>VER AUDITORIAS</h2>
+                
+                <p:dataTable value="#{comentarController.auditoria}" var="audi" paginator="true" rows="50">
+                    <p:column headerText="tabla_aud">
+                        <h:outputText value="#{audi.tabla_aud}" />
+                    </p:column>
+                    <p:column headerText="operacion_aud">
+                        <h:outputText value="#{audi.operacion_aud}" />
+                    </p:column>
+                    <p:column headerText="valoranterior_aud">
+                        <h:outputText value="#{audi.valoranterior_aud}" />
+                    </p:column>
+                    <p:column headerText="valornuevo_aud">
+                        <h:outputText value="#{audi.valornuevo_aud}" />
+                    </p:column>
+                    <p:column headerText="fecha_aud">
+                        <h:outputText value="#{audi.fecha_aud}" />
+                    </p:column>
+                    <p:column headerText="usuario_aud">
+                        <h:outputText value="#{audi.usuario_aud}" />
+                    </p:column>
+                    <p:column headerText="esquema_aud">
+                        <h:outputText value="#{audi.esquema_aud}" />
+                    </p:column>
+                    <p:column headerText="activar_aud">
+                        <h:outputText value="#{audi.activar_aud}" />
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

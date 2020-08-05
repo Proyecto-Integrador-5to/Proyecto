@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head> <!--trabajado con jsf (h:) -->    
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, 
+              minimum-scale=1.0"/>
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="index.css" />
+    </h:head>
+    <h:body>
+        <center><hr/><img src="resources/images/Head.png" alt="Workplace" usemap="#head"/>
+        <map name="head">
+            <area shape="rect" coords="1,1,896,58" alt="Head_" href="index.jsf"/>
+        </map><hr/></center>
+        
+        <h:form>    
+            <p:messages id="mensaje" severity="info, fatal" showSummary="true" showDetail="true"/>
+            
+            <p:fieldset legend="Datos Personales" >
+                <p:panelGrid columns="3" id="pgDatos">
+                    <p:outputLabel for="txtNombres" value="Nombres" />
+                    <p:inputText id="txtNombres" value="#{usuarioController.persona.nombres}" required="true"/>
+                    <p:message for="txtNombres" />
+
+                    <p:outputLabel for="txtApellidos" value="Apellidos" />
+                    <p:inputText id="txtApellidos" value="#{usuarioController.persona.apellidos}" required="true"/>
+                    <p:message for="txtApellidos" />
+
+                    <p:outputLabel for="txtSexo" value="Sexo" />
+                    <p:selectOneRadio id="txtSexo" value="#{usuarioController.persona.sexo}" required="true">
+                        <f:selectItem itemValue="M" itemLabel="Masculino" />
+                        <f:selectItem itemValue="F" itemLabel="Femenino" />
+                    </p:selectOneRadio>
+                    <p:message for="txtSexo" />
+
+                    <p:outputLabel for="txtFecha_Nacimiento" value="Fec. Nacimiento" />
+                    <p:calendar id="txtFecha_Nacimiento" value="#{usuarioController.persona.fechaNacimiento}" required="true" locale="es" /> 
+                    <p:message for="txtFecha_Nacimiento" />
+                </p:panelGrid>
+            </p:fieldset>
+                
+            <p:fieldset legend="Datos De La Cuenta" > 
+                <p:panelGrid columns="3" id="pgCuenta"> 
+                    <p:outputLabel for="cboTipo" value="Tipo de Cuenta" />
+                    <p:selectOneMenu id="cboTipo" value="#{usuarioController.usuario.tipo}" required="true" requiredMessage="Campo Requerido!">
+                        <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                        <f:selectItem itemValue="O" itemLabel="Operario"/>
+                    </p:selectOneMenu>
+                    <p:message for="cboTipo" />
+                    
+                    <p:outputLabel for="txtUsuario" value="Usuario" />
+                    <p:inputText id="txtUsuario" value="#{usuarioController.usuario.usuario}" required="true" requiredMessage="Campo Requerido!" />
+                    <p:message for="txtUsuario" />
+
+                    <p:outputLabel for="clave1" value="Clave"  />
+                    <p:password id="clave1" value="#{usuarioController.usuario.clave}"  required="true" requiredMessage="Mensaje Requerido!" 
+                                weakLabel="Débil" goodLabel="Bueno" strongLabel="Fuerte"
+                                validatorMessage="Las claves no coinciden!" 
+                                match="clave2" feedback="true" promptLabel="Ingrese una clave"/>
+                    <p:message for="clave1" />
+
+                    <p:outputLabel for="clave2" value="Repetir Clave" />
+                    <p:password id="clave2" required="true" requiredMessage="Mensaje Requerido!"/>
+                    <p:message for="clave2" />
+                </p:panelGrid>
+                
+                <p:commandButton icon="ui-icon-check" value="Registrar" update="pgCuenta, pgDatos, mensaje" actionListener="#{usuarioController.registrar()}"/> 
+            </p:fieldset>
+        </h:form>
+        <h:outputScript library="js" name="spanishLocale.js" />
+        
+        <footer>
+            <div class="footer-container">
+                <div class="footer-main">
+                    <div class="footer-columna">
+                        <h2>About</h2>
+                        <p>Castilla y León​​ es una comunidad autónoma española, referida como «comunidad histórica y cultural» en su Estatuto de Autonomía.​ Se constituyó como preautonomía en 1978​ y adquirió su estatus de comunidad autónoma en 1983.
+                            <p:link value="Mas Info" outcome="about" style="color: grey"/>
+                        </p>
+                    </div>
+                    <div class="footer-columna">
+                        <h2>Contact</h2>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Isaac Castro</p></span><br/>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Richar Cabrera</p></span><br/>
+                        <span class="fa fa-address-card" aria-hidden="true"><p>Jhonny Velasco</p></span><br/>
+                            <p:link value="Mas Info" outcome="contact" style="color: grey"/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copy-redes">
+                <div class="main-copy-redes">
+                    <div class="footer-copy">
+                        © 2020 | Derechos Reservados | <a target="_blank" href="https://www.ups.edu.ec/" style="color: grey"> Universidad Politecnica Salesiana</a> | Proyecto Intergrador 5to Semestre
+                    </div>
+                    <div class="footer-redes">
+                        <a target="_blank" href="https://www.facebook.com/christian12lp" class="fa fa-facebook"></a>
+                        <a target="_blank" href="https://github.com/Proyecto-Integrador-5to/Proyecto" class="fa fa-github"></a>
+                        <a target="_blank" href="https://github.com/Proyecto-Integrador-5to/Proyecto/wiki" class="fa fa-wikipedia-w"></a>
+                        <a target="_blank" href="https://creativecommons.org/" class="fa fa-creative-commons"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+    </h:body>
+</html>

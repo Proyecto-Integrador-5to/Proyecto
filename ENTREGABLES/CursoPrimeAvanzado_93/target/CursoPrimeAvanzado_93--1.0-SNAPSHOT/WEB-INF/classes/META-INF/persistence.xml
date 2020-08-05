@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="primePU" transaction-type="JTA">
+    <jta-data-source>jdbc/prime</jta-data-source>
+    <class>com.proyecto.model.Categoria</class>
+    <class>com.proyecto.model.Menu</class>
+    <class>com.proyecto.model.Nota</class>
+    <class>com.proyecto.model.Usuario</class>
+    <class>com.proyecto.model.Telefono</class>
+    <class>com.proyecto.model.Persona</class>
+    <class>com.proyecto.model.Dim_provincias</class>
+    <class>com.proyecto.model.Dim_fecha</class>
+    <class>com.proyecto.model.Transcurso_epidemiologico</class>
+    <class>com.proyecto.model.Auditoria</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
